@@ -467,4 +467,56 @@ function problem13() {
   return sum;
 }
 
-problem13();
+
+//The following iterative sequence is defined for the set of positive integers:
+//n → n/2 (n is even)
+//n → 3n + 1 (n is odd)
+
+//Using the rule above and starting with 13, we generate the following sequence:
+//13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1
+//It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms. Although it has not been proved yet (Collatz Problem), it is thought that all starting numbers finish at 1.
+//Which starting number, under one million, produces the longest chain?
+//NOTE: Once the chain starts the terms are allowed to go above one million.
+function problem14(underNum) {
+  let max = 0;
+  let startingNum = 0;
+  for(let i = 1; i < underNum; i++){
+    if (collatz(i).length > max) {
+      startingNum = i;
+      max = collatz(i).length;
+    }
+  }
+  return startingNum;
+}
+
+function collatz(num) {
+  let arr = [];
+  while (num != 1) {
+    if (num % 2 == 0) {
+      num = num/2;
+    } else {
+      num = (num*3) + 1;
+    }
+    arr.push(num);
+  }
+  return arr;
+}
+
+
+//Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down, there are exactly 6 routes to the bottom right corner.
+//How many such routes are there through a 20×20 grid?
+// ANSWER USING CHOOSE: 137,846,528,820
+function problem15(x,y) {
+  let n = x+y;
+  return factorial(n) / (factorial(y) * factorial(n-y));
+}
+
+function factorial(num) {
+  if (num === 1) return 1;
+  return num * factorial(num-1);
+}
+
+
+
+//2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
+//What is the sum of the digits of the number 2^1000?
