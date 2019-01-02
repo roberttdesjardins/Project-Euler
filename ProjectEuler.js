@@ -554,9 +554,6 @@ function problem67() {
   let numArr = stringArr.map(elem => elem.split(" ").map(Number));
   maxPathSum(numArr);
 }
-
-problem67();
-
 function maxPathSum(numArr) {
   while (numArr.length > 1) {
     for(let i = 0; i < numArr[numArr.length-2].length; i++) {
@@ -567,3 +564,6 @@ function maxPathSum(numArr) {
   console.log(numArr);
 }
 
+function problem20() {
+  
+}
